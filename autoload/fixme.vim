@@ -6,7 +6,7 @@ function! fixme#ShowFixmes(findroot)
 		let l:path = '%'
 	endif
 
-	let l:search_str = ' /\v<' . join(g:fixme_sigils, '|') . '>/ '
+	let l:search_str = ' /\v\C<' . join(g:fixme_sigils, '|') . '>/ '
 	if g:fixme_debug
 		echomsg 'Now searching for: ' . l:search_str
 	endif
