@@ -1,6 +1,6 @@
 " fixme.vim - A plugin to show you work that needs to be done
 " Maintainer: Cameron Rossington <cameron.rossington@gmail.com>
-" Version:    0.1
+" Version:    0.2
 
 if exists('g:loaded_fixme') || &compatible
 	finish
