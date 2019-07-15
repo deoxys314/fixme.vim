@@ -10,17 +10,10 @@ let g:loaded_fixme = 1
 
 " Section: Settings
 
-if !exists('g:fixme_sigils')
-	let g:fixme_sigils = ['TODO', 'FIXME', 'HACK', 'XXX']
-endif
-
-if !exists('g:fixme_openwindow')
-	let g:fixme_openwindow = 1
-endif
-
-if !exists('g:fixme_debug')
-	let g:fixme_debug = 0
-endif
+let g:fixme_debug = get(g:, 'fixme_debug', 0)
+let g:fixme_openwindow = get(g:, 'fixme_openwindow', 1)
+let g:fixme_sigils = get(g:, 'fixme_sigils', ['TODO', 'FIXME', 'HACK', 'XXX'])
+let g:fixme_vcs = get(g:, 'fixme_vcs', ['.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/'])
 
 " Section: Commands
 
