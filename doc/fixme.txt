@@ -1,0 +1,73 @@
+*fixme.txt*  Plugin for showing the todo markers scattered in code.
+
+Author:  Cameron Rossington <cameron.rossington@gmail.com>
+License: MIT License
+
+This plugin is only available if 'compatible' is not set.
+
+INTRODUCTION
+
+Often, a codebase will have instances of comments indicating work to be done,
+or ugly hacks, features yet to be implemented. As a project grows, or as the
+number of collaborators grows (or both), this becomes increasingly common.
+Often, comments will be littered with TODO or FIXME. Some editors (even Vim
+itself, for some of the syntax files it ships with) will highlight them for
+you, but this is only helpful if you notice that small splash of color as you
+scroll by.
+
+Over time, I found myself writing many variants of the same |:vimgrep| and
+|:lvimgrep| queries to find these small bits of text which indicate a larger
+problem. As such, I decided to extract out this functionality into a plugin.
+
+USAGE
+
+vim-fixme will populate your quickfix list with trouble sites when the
+appropriate mapping is invoked. By default, this is <leader>f for the file in
+the current buffer.
+
+SETTINGS
+
+There are a few settings for vim-fixme, all controlled by global variables. If
+these are not set, default values will be set on plugin initialization.
+
+g:fixme_debug                                                 *g:fixme_debug*
+
+  Type: |Number|
+  Default: `0`
+
+  If this is set to `1` (or `v:true`, or any truthy value), fixme will print
+  some debugging information as |message|s.
+
+g:fixme_nomappings                                       *g:fixme_nomappings*
+
+  Type: Any
+  Default: Not Set
+
+  If this variable exists, only <Plug> mappings will be defined. All other
+  mappings will be left for the user to set in their `.vimrc`.
+
+g:fixme_openwindow                                       *g:fixme_openwindow*
+
+  Type: |Number|
+  Default: `1`
+
+  If this is set to 0, then the quickfix list will not be automatically
+  opened after a search completes.
+
+g:fixme_sigils                                               *g:fixme_sigils*
+
+  Type: |List| [|String|]
+  Default: ['TODO', 'FIXME', 'HACK', 'XXX']
+
+  These are the strings which fixme will look for in the  regular expression it
+  generates.  They are chosen based on common code comments. Users are
+  encouraged to set their own string as necessary. (See the notes section below
+  for information on case sensitivity.)
+
+
+NOTES
+
+The search fixme performs is case-sensitive, irrespective of your |'smartcase'|
+and |'ignorecase'| settings. Changing this behavior is not supported at this
+time. This search also does not differentiate between code and comments. In
+fact, it doesn't know anything about your text at all.
