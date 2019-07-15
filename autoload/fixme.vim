@@ -1,6 +1,6 @@
 function! fixme#ShowFixmes(findroot)
 	if !empty(a:findroot)
-		echoerr "Finding the project root is not yet implemented."
+		echoerr 'Finding the project root is not yet implemented.'
 		return
 	else
 		let l:path = '%'
