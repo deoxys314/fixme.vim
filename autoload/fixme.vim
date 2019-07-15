@@ -12,7 +12,11 @@ function! fixme#FindFixmes(findroot) abort
 		echomsg 'Now searching for: ' . l:search_str
 	endif
 
-	execute 'vimgrep' . l:search_str . l:path
+	execute 'silent! vimgrep' . l:search_str . l:path
+	if len(getqflist()) == 0
+		echomsg 'No fixme results found.'
+	endif
+
 	if g:fixme_openwindow
 		copen
 	endif
