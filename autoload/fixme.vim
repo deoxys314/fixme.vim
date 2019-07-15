@@ -1,4 +1,5 @@
-function! fixme#ShowFixmes(findroot)
+function! fixme#FindFixmes(findroot) abort
+
 	if !empty(a:findroot)
 		echoerr 'Finding the project root is not yet implemented.'
 		return
@@ -11,9 +12,9 @@ function! fixme#ShowFixmes(findroot)
 		echomsg 'Now searching for: ' . l:search_str
 	endif
 
-	execute 'lvimgrep' . l:search_str . l:path
+	execute 'vimgrep' . l:search_str . l:path
 	if g:fixme_openwindow
-		lopen  " TODO: comment on this function
+		copen
 	endif
 
 endfunction

@@ -17,11 +17,14 @@ let g:fixme_vcs = get(g:, 'fixme_vcs', ['.git', '.git/', '_darcs/', '.hg/', '.bz
 
 " Section: Commands
 
-command! -bang ShowFixmes :call fixme#ShowFixmes("<bang>")
+command! -bang FindFixmes :call fixme#FindFixmes('<bang>')
 
 " Section: Maps
 
-nnoremap <silent> <Plug>FixmeSearch ShowFixmes
-if empty(mapcheck('<leader>f', 'n'))
-	nmap <leader>f <Plug>FixmeSearch
+nnoremap <silent> <Plug>FindFixmes :FindFixmes<cr>
+nnoremap <silent> <Plug>FindFixmes! :FindFixmes!<cr>
+if !exists('g:fixme_nomappings')
+    if empty(mapcheck('<leader>f', 'n'))
+	nmap <silent> <leader>f <Plug>FindFixmes
+    endif
 endif
