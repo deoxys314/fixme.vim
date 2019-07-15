@@ -2,7 +2,7 @@
 " Maintainer: Cameron Rossington <cameron.rossington@gmail.com>
 " Version:    0.1
 
-if exists('g:loaded_fixme') || &cp
+if exists('g:loaded_fixme') || &compatible
 	finish
 endif
 let g:loaded_fixme = 1
