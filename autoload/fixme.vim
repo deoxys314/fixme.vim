@@ -13,6 +13,7 @@ function! fixme#FindFixmes(findroot) abort
 	execute 'silent! vimgrep' . l:search_str . l:path
 	if len(getqflist()) == 0
 		echomsg 'No fixme results found.'
+		return
 	endif
 
 	if g:fixme_openwindow
