@@ -8,7 +8,7 @@ function! fixme#FindFixmes(findroot) abort
 	endif
 
 	let l:search_str = ' /\v\C<' . join(g:fixme_sigils, '|') . '>/ '
-	call s:FixmeDebugEcho('Now searching for: ' . l:search_str)
+	call s:FixmeDebugEcho('Now searching for: ' . join(g:fixme_sigils, ', '))
 
 	execute 'silent! vimgrep' . l:search_str . l:path
 	if len(getqflist()) == 0
