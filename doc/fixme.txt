@@ -1,7 +1,7 @@
 *fixme.txt*  Plugin for showing the todo markers scattered in code.
 
-Author:  Cameron Rossington <cameron.rossington@gmail.com>
-License: MIT License
+Author:  Cameron Rossington <cameron.rossington@gmail.com> License: MIT
+License
 
 This plugin is only available if 'compatible' is not set.
 
@@ -34,42 +34,38 @@ these are not set, default values will be set on plugin initialization.
 
 g:fixme_debug                                                 *g:fixme_debug*
 
-  Type: |Number|
-  Default: `0`
+  Type: |Number| Default: `0`
 
   If this is set to `1` (or `v:true`, or any truthy value), fixme will print
   some debugging information as |message|s.
 
 g:fixme_nomappings                                       *g:fixme_nomappings*
 
-  Type: Any
-  Default: Not Set
+  Type: Any Default: Not Set
 
   If this variable exists, only <Plug> mappings will be defined. All other
   mappings will be left for the user to set in their `.vimrc`.
 
 g:fixme_openwindow                                       *g:fixme_openwindow*
 
-  Type: |Number|
-  Default: `1`
+  Type: |Number| Default: `1`
 
-  If this is set to 0, then the quickfix list will not be automatically
-  opened after a search completes.
+  If this is set to 0, then the quickfix list will not be automatically opened
+  after a search completes.
 
 g:fixme_sigils                                               *g:fixme_sigils*
 
-  Type: |List| [|String|]
-  Default: ['TODO', 'FIXME', 'HACK', 'XXX']
+  Type: |List| [|String|] Default: ['TODO', 'FIXME', 'HACK', 'XXX']
 
-  These are the strings which fixme will look for in the  regular expression it
-  generates.  They are chosen based on common code comments. Users are
-  encouraged to set their own string as necessary. (See the notes section below
-  for information on case sensitivity.)
+  These are the strings which fixme will look for in the  regular expression
+  it generates.  They are chosen based on common code comments. Users are
+  encouraged to set their own string as necessary. (See the notes section
+  below for information on case sensitivity.)
 
 g:fixme_vcs                                                     *g:fixme_vcs*
 
-  Type: |List| [|String|]
-  Default: ['.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
+  Type: |List| [|String|] Default: ['.git', '.git/', '_darcs/', '.hg/',
+  '.bzr/', '.svn/']
 
   A list of the folders and/or files that fixme will look for to identify
   a project root. Note that they are checked left to right, so if you use git,
@@ -80,15 +76,19 @@ NOTES
 
 The project-wide search is inspired by `vim-rooter`
 (https://github.com/airblade/vim-rooter), and works similarly. From the
-directory of the current file, it will iterate up the directory hierarchy until
-it either finds one of the files noted, or it cannot go upwards anymore. In the
-first case, it will use the first directory found. (NB, this can be a source of
-confusion with git submodules.) In the second case, it will use the directory
-the file is in (equivalent to |expand|('%:p:h'). If no file is defined, (e.g.
-a new buffer) this will depend on the directory Vim is in (possibly you have
-|:cd|'d).
+directory of the current file, it will iterate up the directory hierarchy
+until it either finds one of the files noted, or it cannot go upwards anymore.
+In the first case, it will use the first directory found. (NB, this can be
+a source of confusion with git submodules.) In the second case, it will use
+the directory the file is in (equivalent to |expand|('%:p:h'). If no file is
+defined, (e.g.  a new buffer) this will depend on the directory Vim is in
+(possibly you have |:cd|'d).
 
-The search fixme performs is case-sensitive, irrespective of your |'smartcase'|
-and |'ignorecase'| settings. Changing this behavior is not supported at this
-time. This search also does not differentiate between code and comments. In
-fact, it doesn't know anything about your text at all.
+The search fixme performs is case-sensitive, irrespective of your
+|'smartcase'| and |'ignorecase'| settings. Changing this behavior is not
+supported at this time. This search also does not differentiate between code
+and comments. In fact, it doesn't know anything about your text at all.
+
+Because vim-fixme uses a recursive glob, it can take a long time in deep
+directory heirarchies, where it will go up to 100 levels deep. (See
+'starstar-wildcard' for more information.)
