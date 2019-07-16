@@ -1,6 +1,6 @@
 " fixme.vim - A plugin to show you work that needs to be done
 " Maintainer: Cameron Rossington <cameron.rossington@gmail.com>
-" Version:    0.2
+" Version:    0.3.0
 
 if exists('g:loaded_fixme') || &compatible
 	finish
@@ -26,5 +26,9 @@ nnoremap <silent> <Plug>FindFixmes! :FindFixmes!<cr>
 if !exists('g:fixme_nomappings')
     if empty(mapcheck('<leader>f', 'n'))
 	nmap <silent> <leader>f <Plug>FindFixmes
+    endif
+
+    if empty(mapcheck('<leader>F', 'n'))
+	nmap <silent> <leader>F <Plug>FindFixmes!
     endif
 endif

@@ -23,7 +23,9 @@ USAGE
 
 vim-fixme will populate your quickfix list with trouble sites when the
 appropriate mapping is invoked. By default, this is <leader>f for the file in
-the current buffer.
+the current buffer, and <leader>F for a project-wide search. (More details on
+project-wide search below.) vim-fixme will never override a mapping - it
+checks to see if you already have one set before creating its own.
 
 SETTINGS
 
@@ -64,8 +66,27 @@ g:fixme_sigils                                               *g:fixme_sigils*
   encouraged to set their own string as necessary. (See the notes section below
   for information on case sensitivity.)
 
+g:fixme_vcs                                                     *g:fixme_vcs*
+
+  Type: |List| [|String|]
+  Default: ['.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
+
+  A list of the folders and/or files that fixme will look for to identify
+  a project root. Note that they are checked left to right, so if you use git,
+  it is a small optimization to put the `.git/` folder first, and similar for
+  other VCS-specific files.
 
 NOTES
+
+The project-wide search is inspired by `vim-rooter`
+(https://github.com/airblade/vim-rooter), and works similarly. From the
+directory of the current file, it will iterate up the directory hierarchy until
+it either finds one of the files noted, or it cannot go upwards anymore. In the
+first case, it will use the first directory found. (NB, this can be a source of
+confusion with git submodules.) In the second case, it will use the directory
+the file is in (equivalent to |expand|('%:p:h'). If no file is defined, (e.g.
+a new buffer) this will depend on the directory Vim is in (possibly you have
+|:cd|'d).
 
 The search fixme performs is case-sensitive, irrespective of your |'smartcase'|
 and |'ignorecase'| settings. Changing this behavior is not supported at this
