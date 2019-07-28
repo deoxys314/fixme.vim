@@ -34,28 +34,32 @@ these are not set, default values will be set on plugin initialization.
 
 g:fixme_debug                                                 *g:fixme_debug*
 
-  Type: |Number| Default: `0`
+  Type: |Number|
+  Default: `0`
 
   If this is set to `1` (or `v:true`, or any truthy value), fixme will print
   some debugging information as |message|s.
 
 g:fixme_nomappings                                       *g:fixme_nomappings*
 
-  Type: Any Default: Not Set
+  Type: Any 
+  Default: Not Set
 
   If this variable exists, only <Plug> mappings will be defined. All other
   mappings will be left for the user to set in their `.vimrc`.
 
 g:fixme_openwindow                                       *g:fixme_openwindow*
 
-  Type: |Number| Default: `1`
+  Type: |Number| 
+  Default: `1`
 
   If this is set to 0, then the quickfix list will not be automatically opened
   after a search completes.
 
 g:fixme_sigils                                               *g:fixme_sigils*
 
-  Type: |List| [|String|] Default: ['TODO', 'FIXME', 'HACK', 'XXX']
+  Type: |List| [|String|] 
+  Default: ['TODO', 'FIXME', 'HACK', 'XXX']
 
   These are the strings which fixme will look for in the  regular expression
   it generates.  They are chosen based on common code comments. Users are
@@ -64,8 +68,8 @@ g:fixme_sigils                                               *g:fixme_sigils*
 
 g:fixme_vcs                                                     *g:fixme_vcs*
 
-  Type: |List| [|String|] Default: ['.git', '.git/', '_darcs/', '.hg/',
-  '.bzr/', '.svn/']
+  Type: |List| [|String|] 
+  Default: ['.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
 
   A list of the folders and/or files that fixme will look for to identify
   a project root. Note that they are checked left to right, so if you use git,
